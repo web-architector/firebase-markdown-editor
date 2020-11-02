@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "./static/css/main.d34088f6.chunk.css",
-    "main.js": "./static/js/main.f6ff8a7a.chunk.js",
-    "main.js.map": "./static/js/main.f6ff8a7a.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.82803625.js",
-    "runtime-main.js.map": "./static/js/runtime-main.82803625.js.map",
-    "static/css/2.3a221eca.chunk.css": "./static/css/2.3a221eca.chunk.css",
-    "static/js/2.f430922e.chunk.js": "./static/js/2.f430922e.chunk.js",
-    "static/js/2.f430922e.chunk.js.map": "./static/js/2.f430922e.chunk.js.map",
-    "index.html": "./index.html",
-    "precache-manifest.c099d3ff5661a2ee2f6973098ca0dc18.js": "./precache-manifest.c099d3ff5661a2ee2f6973098ca0dc18.js",
-    "service-worker.js": "./service-worker.js",
-    "static/css/2.3a221eca.chunk.css.map": "./static/css/2.3a221eca.chunk.css.map",
-    "static/css/main.d34088f6.chunk.css.map": "./static/css/main.d34088f6.chunk.css.map",
-    "static/js/2.f430922e.chunk.js.LICENSE.txt": "./static/js/2.f430922e.chunk.js.LICENSE.txt",
-    "static/media/index.css": "./static/media/HKGrotesk-SemiBoldItalic.3ecc2801.otf"
+    "main.css": "/firebase-markdown-editor/static/css/main.d44c8323.chunk.css",
+    "main.js": "/firebase-markdown-editor/static/js/main.95dae411.chunk.js",
+    "main.js.map": "/firebase-markdown-editor/static/js/main.95dae411.chunk.js.map",
+    "runtime-main.js": "/firebase-markdown-editor/static/js/runtime-main.d31c5f93.js",
+    "runtime-main.js.map": "/firebase-markdown-editor/static/js/runtime-main.d31c5f93.js.map",
+    "static/css/2.3a221eca.chunk.css": "/firebase-markdown-editor/static/css/2.3a221eca.chunk.css",
+    "static/js/2.d67c23fe.chunk.js": "/firebase-markdown-editor/static/js/2.d67c23fe.chunk.js",
+    "static/js/2.d67c23fe.chunk.js.map": "/firebase-markdown-editor/static/js/2.d67c23fe.chunk.js.map",
+    "index.html": "/firebase-markdown-editor/index.html",
+    "precache-manifest.3b879e264061f612d7e2d430c6da9b99.js": "/firebase-markdown-editor/precache-manifest.3b879e264061f612d7e2d430c6da9b99.js",
+    "service-worker.js": "/firebase-markdown-editor/service-worker.js",
+    "static/css/2.3a221eca.chunk.css.map": "/firebase-markdown-editor/static/css/2.3a221eca.chunk.css.map",
+    "static/css/main.d44c8323.chunk.css.map": "/firebase-markdown-editor/static/css/main.d44c8323.chunk.css.map",
+    "static/js/2.d67c23fe.chunk.js.LICENSE.txt": "/firebase-markdown-editor/static/js/2.d67c23fe.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/firebase-markdown-editor/static/media/HKGrotesk-SemiBoldItalic.3ecc2801.otf"
   },
   "entrypoints": [
-    "static/js/runtime-main.82803625.js",
+    "static/js/runtime-main.d31c5f93.js",
     "static/css/2.3a221eca.chunk.css",
-    "static/js/2.f430922e.chunk.js",
-    "static/css/main.d34088f6.chunk.css",
-    "static/js/main.f6ff8a7a.chunk.js"
+    "static/js/2.d67c23fe.chunk.js",
+    "static/css/main.d44c8323.chunk.css",
+    "static/js/main.95dae411.chunk.js"
   ]
 }
