@@ -1,0 +1,62 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true,
+        "node": true
+    },
+    "extends": [
+//        "airbnb",
+//        "plugin:react-hooks/recommended",
+//        "plugin:react/recommended",
+        "airbnb",
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react-hooks"
+    ],
+    "rules": {
+        // enable additional rules
+        "react/prop-types": 0,
+
+        "max-len": ["warn", 120],
+
+        "comma-dangle": [2, {
+            "arrays": "never",
+            "objects": "never",
+            "imports": "never",
+            "exports": "never",
+            "functions": "ignore"
+        }],
+
+        // "indent": ["error", 4,  { "ignoredNodes": ["JSXElement *", "JSXElement"]}],
+        "indent": ["error", 4,  { "ignoredNodes": ["JSXAttribute"]}],
+
+        // Indent JSX with 4 spaces
+        "react/jsx-indent": ["error", 4],
+
+        // Indent props with 4 spaces
+//        "react/jsx-indent-props": ["error", 2]
+        "react/jsx-indent-props": [1, "first"],
+
+        "react/jsx-pascal-case": [1, { "allowAllCaps": true, "ignore": ["FUCK", "SUCK"] }],
+
+        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-spreading.md
+        "react/jsx-props-no-spreading": [2, {
+            "html": "ignore",
+            "custom": "ignore",
+            "explicitSpread": "ignore",
+            "exceptions": ["Куку куку"]
+        }]
+    }
+}
