@@ -8,6 +8,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import './Editor.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
+/* Public URL for Reach router - analog of package.json "homepage" key */
+const PUBLIC_URL = process.env.NODE_ENV === 'development' ? './' : process.env.PUBLIC_URL;
+
 const getFile = async (userId, fileId) => {
     const doc = await db
         .collection('users')
@@ -22,7 +25,9 @@ const getFile = async (userId, fileId) => {
 export const Editor = ({ user, userId, fileId }) => {
     useEffect(() => {
         if (!user) {
-            navigate('/');
+            const redirectUrl = process.env.NODE_ENV === 'development' ? '/' : PUBLIC_URL;
+            console.log(`###: Editor: User has log out. Redirecting to "${redirectUrl}"`);
+            navigate(redirectUrl).then();
         }
     }, [user]);
 
@@ -57,12 +62,12 @@ export const Editor = ({ user, userId, fileId }) => {
             .update({
                 content: value
             });
-        mutate([userId, fileId]);
+        mutate([userId, fileId]).then();
         toast.success('Your changes have been saved!');
     };
 
     const uploadImage = async (uploadedFile) => {
-        if (uploadedFile.size <= 1000000) {
+        if (uploadedFile.size <= 100000) {
             const doc = await db
                 .collection('users')
                 .doc(userId)
@@ -78,16 +83,19 @@ export const Editor = ({ user, userId, fileId }) => {
 
             return uploadTask.ref.getDownloadURL();
         }
-        toast.error(' Image too big!');
+        toast.error(' Image should be less then 100kb!');
+        // return null; // ESLint: Expected to return a value at the end of async arrow function.(consistent-return)
     };
 
-    if (error) return <p>We had an issue while getting the data</p>;
+    if (error) {
+        console.error(error);
+        return <p>We had an issue while getting the data</p>;
+    }
     if (!file) return <p>Loading...</p>;
-
     return (
         <div>
             <header className="editor-header">
-                <Link className="back-button" to={`/user/${userId}`}>
+                <Link className="back-button" to={`${PUBLIC_URL}/user/${userId}`}>
                     &lt;
                 </Link>
                 <h3>{file.name}</h3>
@@ -95,6 +103,7 @@ export const Editor = ({ user, userId, fileId }) => {
                         disabled={file.content === value}
                         onClick={saveChanges}
                         className="save-button"
+                        type="button"
                 >
                     Save Changes
                 </button>

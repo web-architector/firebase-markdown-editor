@@ -8,6 +8,8 @@ import {
 import { firebaseAppAuth, providers } from 'services/firebase';
 
 import './App.css';
+/* Public URL for Reach router - analog of package.json "homepage" key */
+const {PUBLIC_URL} = process.env;
 
 const createComponentWithAuth = withFirebaseAuth({
     providers,
@@ -26,7 +28,7 @@ const App = (props) => {
         <>
             { loading && <Preloader /> }
             <header className="header">
-                <h2>Smart Markdown</h2>
+                <h2>Умный редактор</h2>
                 { user && (
                     <div className="user-profile">
                         <a
@@ -43,7 +45,7 @@ const App = (props) => {
                     </div>
                 ) }
             </header>
-            <Router>
+            <Router basepath={PUBLIC_URL}>
                 <SignIn
                     path="/"
                     user={user}

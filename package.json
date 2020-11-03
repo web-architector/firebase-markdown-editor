@@ -6,7 +6,6 @@
     "node": "13.9.0",
     "npm": "^6.0.0"
   },
-  "homepage": "https://web-architector.github.io/firebase-markdown-editor",
   "dependencies": {
     "@reach/router": "^1.3.4",
     "firebase": "^7.22.0",
@@ -20,10 +19,11 @@
     "swr": "^0.3.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env-shell PUBLIC_URL=http://localhost react-scripts start",
+    "build": "cross-env-shell PUBLIC_URL=/firebase-markdown-editor react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,11 +42,13 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^2.5.1"
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "gh-pages": "^3.1.0"
   }
 }

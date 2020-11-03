@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { navigate } from '@reach/router';
 
+const { PUBLIC_URL } = process.env;
+
 export const SignIn = ({
     user,
     signIns: { signInWithGoogle, signInWithGithub }
@@ -8,13 +10,20 @@ export const SignIn = ({
 }) => {
     useEffect(() => {
         if (user) {
-            navigate(`/user/${user.uid}`);
+            const publicUrl = process.env.NODE_ENV === 'development' ? '' : PUBLIC_URL;
+            const redirectUrl = `${publicUrl}/user/${user.uid}`;
+            console.log(`###: SignIn component: User found. Redirecting to "${redirectUrl}"`);
+            navigate(redirectUrl).then();
         }
     }, [user]);
 
     return (
         <div className="sign-in-page">
-            <h3>Добро пожаловать редактор  Smart Markdown!</h3>
+            <h3>
+                Добро пожаловать в
+                <em> Умный Редактор</em>
+                !
+            </h3>
             <p>
                 Для хранения Ваших документов и синхронизации между устройствами войдите, используя одну из учетных записей социальной сети
             </p>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import useSWR, { mutate } from 'swr';
-// import useSWR from 'swr';
 import { Link, navigate } from '@reach/router';
 import { db } from 'services/firebase';
 import './Dashboard.css';
+
+/* Public URL for Reach router - analog of package.json "homepage" key */
+const { PUBLIC_URL } = process.env;
 
 // Получение файлов юзера из базы данных
 const getUserFiles = async (userId) => {
@@ -25,7 +27,7 @@ const getUserFiles = async (userId) => {
         return userFiles;
     }
     console.log('User not found in database, creating new entry...');
-    db.collection('users').doc(userId).set({});
+    await db.collection('users').doc(userId).set({});
     return [];
 };
 
@@ -53,11 +55,15 @@ export const Dashboard = ({ user, userId }) => {
     const { data, error } = useSWR(userId, getUserFiles);
     useEffect(() => {
         if (!user) {
-            navigate('/');
+            const redirectUrl = process.env.NODE_ENV === 'development' ? '/' : PUBLIC_URL;
+            navigate(redirectUrl).then();
         }
     }, [user]);
 
-    if (error) return <p>Ошибка при загрузке данных!</p>;
+    if (error) {
+        console.error(error);
+        return <p>Ошибка при загрузке данных!</p>;
+    }
     if (!data) return <p>Загрузка...</p>;
 
     return (
@@ -67,8 +73,8 @@ export const Dashboard = ({ user, userId }) => {
                         e.preventDefault();
                         if (nameValue) {
                             setNameValue('');
-                            createFile(userId, nameValue).then(r => {});
-                            mutate(userId).then(r => {});
+                            createFile(userId, nameValue).then();
+                            mutate(userId).then();
                         }
                     }}
                     className="new-file-form"
@@ -86,7 +92,7 @@ export const Dashboard = ({ user, userId }) => {
             <ul className="files-list">
                 {data.map((file) => (
                     <li key={file.id} className="file">
-                        <Link to={`/user/${userId}/editor/${file.id}`} className="link">
+                        <Link to={`${PUBLIC_URL}/user/${userId}/editor/${file.id}`} className="link">
                             {file.name}
                         </Link>
                         <button
